@@ -41,4 +41,4 @@ The Smart City Weather Dashboard is an interactive web application that provides
 - **Responsive Web Design** - Mobile-first approach
 
 ### APIs & Services
-- **OpenWeatherMap API** - `https://api.openweathermap.org/data/2.5/`
+- **FreeWeatherMap API** - " https://api.weatherapi.com "
