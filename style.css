@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+#app-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.control-panel {
+  width: 300px;
+  background-color: #1e293b;
+  padding: 2rem;
+  border-right: 1px solid #334155;
+}
+
+.input-group {
+  margin-top: 2rem;
+}
+
+#user_query {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid #475569;
+  padding: 10px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+#trigger_search {
+  width: 100%;
+  padding: 10px;
+  background-color: #38bdf8;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.data-view {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Static Proper Color */
+  background-color: #1e293b;
+}
+
+.main-stats {
+  text-align: center;
+}
+
+#loc_name {
+  font-size: 1.5rem;
+  color: #94a3b8;
+}
+
+#temp_val {
+  font-size: 8rem;
+  margin: 0;
+  color: #f8fafc;
+}
+
+#weather_label {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #38bdf8;
+}
+
+#status_msg {
+  font-size: 0.8rem;
+  color: #38bdf8;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  #app-wrapper {
+    flex-direction: column;
+  }
+  .control-panel {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #334155;
+  }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climate Tracker v1.0</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="app-wrapper">
+      <section class="control-panel">
+        <h2>Climate Tracker</h2>
+        <div class="input-group">
+          <input type="text" id="user_query" placeholder="Enter Location..." />
+          <button id="trigger_search">Fetch Stats</button>
+        </div>
+        <p id="status_msg" style="display: none">Connecting to server...</p>
+      </section>
+
+      <section class="data-view">
+        <div class="main-stats">
+          <h1 id="loc_name">---</h1>
+          <h2 id="temp_val">--</h2>
+          <p id="weather_label">Awaiting Input</p>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
