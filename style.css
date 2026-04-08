@@ -1,3 +1,26 @@
+:root {
+  --bg-color: #0f172a;
+  --panel-bg: #1e293b;
+  --text-color: #f8fafc;
+  --border-color: #334155;
+  --input-bg: #0f172a;
+  --accent-color: #38bdf8;
+  --card-bg: #1e293b;
+  --btn-text: #0f172a;
+  --fav-color: #ef4444;
+}
+
+body.light-mode {
+  --bg-color: #f1f5f9;
+  --panel-bg: #ffffff;
+  --text-color: #0f172a;
+  --border-color: #cbd5e1;
+  --input-bg: #f8fafc;
+  --accent-color: #0284c7;
+  --card-bg: #ffffff;
+  --btn-text: #ffffff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,83 +28,168 @@
 body {
   margin: 0;
   font-family: "Courier New", Courier, monospace;
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #app-wrapper {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 .control-panel {
   width: 300px;
-  background-color: #1e293b;
+  background-color: var(--panel-bg);
   padding: 2rem;
-  border-right: 1px solid #334155;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s;
 }
 
-.input-group {
-  margin-top: 2rem;
+.theme-toggle-wrapper {
+  margin-bottom: 2rem;
 }
 
-#user_query {
-  width: 100%;
-  background: #0f172a;
-  border: 1px solid #475569;
-  padding: 10px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-#trigger_search {
+.control-btn {
   width: 100%;
   padding: 10px;
-  background-color: #38bdf8;
+  background-color: var(--accent-color);
   border: none;
   cursor: pointer;
   font-weight: bold;
-  color: #0f172a;
+  color: var(--btn-text);
+  margin-top: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.input-group {
+  margin-top: 1rem;
+}
+
+#user_query, .dashboard-controls input, .dashboard-controls select {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  color: var(--text-color);
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .data-view {
   flex-grow: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Static Proper Color */
-  background-color: #1e293b;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  height: 100%;
+  overflow-y: auto;
+  transition: background-color 0.3s;
 }
 
-.main-stats {
+.dashboard-controls {
+  padding: 1.5rem;
+  background-color: var(--panel-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: background-color 0.3s;
+}
+
+.dashboard-controls input {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.weather-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
   text-align: center;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background-color 0.3s;
 }
 
-#loc_name {
-  font-size: 1.5rem;
-  color: #94a3b8;
+.weather-card:hover {
+  transform: translateY(-5px);
 }
 
-#temp_val {
-  font-size: 8rem;
-  margin: 0;
-  color: #f8fafc;
+.card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
 }
 
-#weather_label {
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
   font-size: 1.2rem;
-  letter-spacing: 2px;
+  opacity: 0.3;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.action-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.btn-fav {
+  color: var(--fav-color);
+}
+
+.btn-fav.active {
+  opacity: 1;
+}
+
+.btn-del {
+  color: var(--text-color);
+}
+
+.loc-name {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.temp-val {
+  font-size: 4rem;
+  margin: 0;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.weather-label {
+  font-size: 1rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: var(--accent-color);
+  margin-top: 0.5rem;
 }
 
 #status_msg {
   font-size: 0.8rem;
-  color: #38bdf8;
+  color: var(--accent-color);
   margin-top: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #app-wrapper {
     flex-direction: column;
   }
@@ -89,6 +197,9 @@ body {
     width: 100%;
     height: auto;
     border-right: none;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .dashboard-controls {
+    flex-direction: column;
   }
 }

@@ -10,18 +10,35 @@
     <main id="app-wrapper">
       <section class="control-panel">
         <h2>Climate Tracker</h2>
+        <div class="theme-toggle-wrapper">
+          <button id="theme_toggle" class="control-btn">Toggle Light Mode</button>
+        </div>
         <div class="input-group">
-          <input type="text" id="user_query" placeholder="Enter Location..." />
-          <button id="trigger_search">Fetch Stats</button>
+          <input type="text" id="user_query" placeholder="Add New City..." />
+          <button id="trigger_search" class="control-btn">Add City</button>
         </div>
         <p id="status_msg" style="display: none">Connecting to server...</p>
       </section>
 
       <section class="data-view">
-        <div class="main-stats">
-          <h1 id="loc_name">---</h1>
-          <h2 id="temp_val">--</h2>
-          <p id="weather_label">Awaiting Input</p>
+        <div class="dashboard-controls">
+          <input type="text" id="search_cards" placeholder="Search cities (local)..." />
+          <select id="filter_cards">
+            <option value="all">All</option>
+            <option value="warm">Warm (> 20°C)</option>
+            <option value="cold">Cold (<= 20°C)</option>
+            <option value="favorites">Favorites Only</option>
+          </select>
+          <select id="sort_cards">
+            <option value="default">Default</option>
+            <option value="temp_desc">Temp: High to Low</option>
+            <option value="temp_asc">Temp: Low to High</option>
+            <option value="alpha_asc">Alphabetical (A-Z)</option>
+            <option value="alpha_desc">Alphabetical (Z-A)</option>
+          </select>
+        </div>
+        <div class="cards-container" id="cards_container">
+          <!-- Cards will be injected here via JavaScript -->
         </div>
       </section>
     </main>
