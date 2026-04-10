@@ -41,4 +41,24 @@ The Smart City Weather Dashboard is an interactive web application that provides
 - **Responsive Web Design** - Mobile-first approach
 
 ### APIs & Services
-- **FreeWeatherMap API** - " https://api.weatherapi.com "
+- **WeatherAPI** - "https://api.weatherapi.com"
+
+## 🌟 Bonus Features Implemented (Milestone 4)
+- **Debouncing:** Local searching is debounced (300ms) to ensure smooth input handling and reduce unnecessary renders.
+- **Local Storage:** User preferences like bookmarked cities are automatically saved to `localStorage`, persisting user data between sessions.
+- **Loading Indicators:** A sleek CSS-animated spinner provides visual feedback during all network requests, improving perceived performance.
+- **Code Refactoring:** Eliminated `for`/`while` loops in favor of modern JavaScript Higher-Order Functions (`map()`, `filter()`, `find()`, `sort()`) for a cleaner and more functional architecture.
+
+## 🚀 Deployment Instructions
+
+This project is built using standard web technologies (HTML, CSS, JS) and requires no build steps. It is fully ready for deployment on any static platform.
+
+### Deploy via Vercel
+1. Install the Vercel CLI: `npm i -g vercel`
+2. Run `vercel` in the root of the project directory.
+3. Follow the on-screen prompts to deploy instantly.
+
+### Deploy via Netlify
+1. Go to [Netlify](https://app.netlify.com/drop).
+2. Drag and drop the project folder into the deployment zone.
+3. Your live dashboard is instantly accessible! Alternatively, push to GitHub and connect the repository.

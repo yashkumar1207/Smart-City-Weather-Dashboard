@@ -1,26 +1,36 @@
+/* Theme variables (dark mode by default... might tweak later) */
 :root {
   --bg-color: #0f172a;
   --panel-bg: #1e293b;
   --text-color: #f8fafc;
+
   --border-color: #334155;
   --input-bg: #0f172a;
+
   --accent-color: #38bdf8;
   --card-bg: #1e293b;
+
   --btn-text: #0f172a;
   --fav-color: #ef4444;
+  /* red-ish for favorites */
 }
 
+/* Light mode overrides (not super polished yet tbh) */
 body.light-mode {
   --bg-color: #f1f5f9;
   --panel-bg: #ffffff;
   --text-color: #0f172a;
+
   --border-color: #cbd5e1;
   --input-bg: #f8fafc;
+
   --accent-color: #0284c7;
   --card-bg: #ffffff;
+
   --btn-text: #ffffff;
 }
 
+/* basic reset... I always forget this otherwise */
 * {
   box-sizing: border-box;
 }
@@ -28,119 +38,169 @@ body.light-mode {
 body {
   margin: 0;
   font-family: "Courier New", Courier, monospace;
+  /* maybe change later? */
   background-color: var(--bg-color);
   color: var(--text-color);
+
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* main wrapper layout */
 #app-wrapper {
   display: flex;
   height: 100vh;
   overflow: hidden;
+  /* prevents weird scroll bug I saw earlier */
 }
 
+/* sidebar / control panel */
 .control-panel {
   width: 300px;
   background-color: var(--panel-bg);
   padding: 2rem;
+
   border-right: 1px solid var(--border-color);
+
   display: flex;
   flex-direction: column;
+
   transition: background-color 0.3s;
 }
 
+/* theme toggle section */
 .theme-toggle-wrapper {
   margin-bottom: 2rem;
+  /* spacing feels okay here */
 }
 
+/* buttons (might refactor later into variants) */
 .control-btn {
   width: 100%;
   padding: 10px;
+
   background-color: var(--accent-color);
   border: none;
+  border-radius: 4px;
+
   cursor: pointer;
   font-weight: bold;
   color: var(--btn-text);
+
   margin-top: 5px;
-  border-radius: 4px;
+
   transition: background-color 0.3s;
 }
 
+/* grouping inputs */
 .input-group {
   margin-top: 1rem;
 }
 
-#user_query, .dashboard-controls input, .dashboard-controls select {
+/* inputs... grouped selector got a bit messy but works */
+#user_query,
+.dashboard-controls input,
+.dashboard-controls select {
   width: 100%;
+
   background: var(--input-bg);
   border: 1px solid var(--border-color);
+
   padding: 10px;
-  color: var(--text-color);
   border-radius: 4px;
+
+  color: var(--text-color);
+
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* main content area */
 .data-view {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+
   background-color: var(--bg-color);
   height: 100%;
+
   overflow-y: auto;
+  /* vertical scroll only */
+
   transition: background-color 0.3s;
 }
 
+/* controls above cards */
 .dashboard-controls {
   padding: 1.5rem;
   background-color: var(--panel-bg);
+
   border-bottom: 1px solid var(--border-color);
+
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+
   transition: background-color 0.3s;
 }
 
 .dashboard-controls input {
   flex-grow: 1;
   min-width: 200px;
+  /* prevents it from shrinking too much */
 }
 
+/* cards layout */
 .cards-container {
   display: grid;
+
+  /* auto-fill works better than fixed cols for responsiveness */
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
   gap: 1.5rem;
   padding: 1.5rem;
 }
 
+/* individual weather card */
 .weather-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
+
   border-radius: 8px;
   padding: 1.5rem;
+
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+  /* subtle shadow... maybe too subtle? */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
   transition: transform 0.2s, background-color 0.3s;
 }
 
 .weather-card:hover {
   transform: translateY(-5px);
+  /* nice lift effect */
 }
 
+/* buttons inside card (fav/delete etc.) */
 .card-actions {
   position: absolute;
   top: 10px;
   right: 10px;
+
   display: flex;
   gap: 5px;
 }
 
+/* generic action buttons */
 .action-btn {
   background: none;
   border: none;
+
   cursor: pointer;
   font-size: 1.2rem;
+
   opacity: 0.3;
+  /* default low visibility */
   transition: opacity 0.2s, transform 0.2s;
 }
 
@@ -149,56 +209,100 @@ body {
   transform: scale(1.1);
 }
 
+/* favorite button */
 .btn-fav {
   color: var(--fav-color);
 }
 
 .btn-fav.active {
   opacity: 1;
+  /* force visible when active */
 }
 
+/* delete button */
 .btn-del {
   color: var(--text-color);
 }
 
+/* location name */
 .loc-name {
   font-size: 1.5rem;
+
   color: var(--text-color);
+
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
+/* temperature */
 .temp-val {
   font-size: 4rem;
   margin: 0;
+
   color: var(--text-color);
   font-weight: bold;
 }
 
+/* weather label */
 .weather-label {
   font-size: 1rem;
+
   letter-spacing: 1px;
   text-transform: uppercase;
+
   color: var(--accent-color);
   margin-top: 0.5rem;
 }
 
+/* status message (loading etc.) */
 #status_msg {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--accent-color);
-  margin-top: 10px;
+
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* spinner before status text */
+#status_msg::before {
+  content: "";
+  display: inline-block;
+
+  width: 14px;
+  height: 14px;
+
+  border: 2px solid var(--accent-color);
+  border-right-color: transparent;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+/* simple spin animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* mobile tweaks (this part always ends up messy...) */
 @media (max-width: 768px) {
   #app-wrapper {
     flex-direction: column;
   }
+
   .control-panel {
     width: 100%;
     height: auto;
+
     border-right: none;
     border-bottom: 1px solid var(--border-color);
   }
+
   .dashboard-controls {
     flex-direction: column;
   }

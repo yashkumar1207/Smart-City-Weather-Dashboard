@@ -1,47 +1,103 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Climate Tracker v1.0</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main id="app-wrapper">
-      <section class="control-panel">
-        <h2>Climate Tracker</h2>
-        <div class="theme-toggle-wrapper">
-          <button id="theme_toggle" class="control-btn">Toggle Light Mode</button>
-        </div>
-        <div class="input-group">
-          <input type="text" id="user_query" placeholder="Add New City..." />
-          <button id="trigger_search" class="control-btn">Add City</button>
-        </div>
-        <p id="status_msg" style="display: none">Connecting to server...</p>
-      </section>
 
-      <section class="data-view">
-        <div class="dashboard-controls">
-          <input type="text" id="search_cards" placeholder="Search cities (local)..." />
-          <select id="filter_cards">
-            <option value="all">All</option>
-            <option value="warm">Warm (> 20°C)</option>
-            <option value="cold">Cold (<= 20°C)</option>
-            <option value="favorites">Favorites Only</option>
-          </select>
-          <select id="sort_cards">
-            <option value="default">Default</option>
-            <option value="temp_desc">Temp: High to Low</option>
-            <option value="temp_asc">Temp: Low to High</option>
-            <option value="alpha_asc">Alphabetical (A-Z)</option>
-            <option value="alpha_desc">Alphabetical (Z-A)</option>
-          </select>
-        </div>
-        <div class="cards-container" id="cards_container">
-          <!-- Cards will be injected here via JavaScript -->
-        </div>
-      </section>
-    </main>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- mobile responsiveness (might tweak scaling later) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Climate Tracker v1.0</title>
+
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- main app container -->
+  <main id="app-wrapper">
+
+    <!-- left panel (controls / inputs etc.) -->
+    <section class="control-panel">
+      <h2>Climate Tracker</h2>
+
+      <!-- theme toggle -->
+      <div class="theme-toggle-wrapper">
+        <!-- text changes via JS -->
+        <button id="theme_toggle" class="control-btn">
+          Toggle Light Mode
+        </button>
+      </div>
+
+      <!-- add city input -->
+      <div class="input-group">
+        <input type="text" id="user_query" placeholder="Add New City..." />
+
+        <!-- not sure if I should disable when empty... maybe later -->
+        <button id="trigger_search" class="control-btn">
+          Add City
+        </button>
+      </div>
+
+      <!-- status / loader text (spinner handled in CSS) -->
+      <p id="status_msg" style="display:none;">
+        Connecting to server...
+      </p>
+    </section>
+
+
+    <!-- right side: data + cards -->
+    <section class="data-view">
+
+      <!-- filters / search / sort -->
+      <div class="dashboard-controls">
+
+        <!-- local search (doesn't hit API) -->
+        <input type="text" id="search_cards" placeholder="Search cities (local)..." />
+
+        <!-- filtering options -->
+        <select id="filter_cards">
+          <option value="all">All</option>
+          <option value="warm">Warm (> 20°C)</option>
+          <option value="cold">Cold (&lt;= 20°C)</option>
+          <option value="favorites">Favorites Only</option>
+        </select>
+
+        <!-- sorting dropdown -->
+        <select id="sort_cards">
+          <option value="default">Default</option>
+
+          <!-- temp based sorting -->
+          <option value="temp_desc">Temp: High to Low</option>
+          <option value="temp_asc">Temp: Low to High</option>
+
+          <!-- alphabetical -->
+          <option value="alpha_asc">Alphabetical (A-Z)</option>
+          <option value="alpha_desc">Alphabetical (Z-A)</option>
+        </select>
+      </div>
+
+      <!-- cards container (JS injects everything here) -->
+      <div class="cards-container" id="cards_container">
+
+        <!-- example card (kept for reference while building UI) -->
+        <!--
+          <div class="weather-card">
+            <h3>City</h3>
+            <p>Temp</p>
+          </div>
+          -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- main script (should probably defer this tbh) -->
+  <script src="script.js"></script>
+
+</body>
+
 </html>
